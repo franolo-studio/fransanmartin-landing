@@ -29,6 +29,17 @@
 - **Trade-off**: Visitors hitting an unknown URL see both languages side-by-side instead of a single locale-matched page. Acceptable for a personal landing where 404s should be rare and the bilingual fallback is informative. Reconsider if/when next-intl publishes an officially-supported pattern for `[locale]/not-found.tsx` under a dynamic root segment.
 - **Follow-up**: Re-test once next-intl ships a v4.x release that adjusts this behavior, or migrate to a different routing pattern (e.g., a non-dynamic root with locale rewrites) if the bilingual fallback becomes user-facing problematic.
 
+### Footer drops the visible email fallback (post-T8 UX iteration, R2.6 deviation)
+
+- **Context**: R2.6 specifies "If the visitor has no default email client configured, then the Site shall still render `sanmartingoyanesfrancisco@gmail.com` as visible, selectable text on the page so it can be copied manually." The Footer originally rendered the address inside an `<address>` element with a `mailto:` link.
+- **Selected**: Replace the visible email with a `footer.availability` line ("Available for teams worldwide." / "Disponible para equipos en todo el mundo.") that signals cross-border availability — a positioning element more aligned with the page's intent. The email continues to be exposed via two `mailto:` CTAs (header + Hero), each with locale-translated subject.
+- **Rationale**:
+  1. For high-intent visitors arriving via LinkedIn / referrals, the modern desktop default is a webmail client (Gmail, Outlook web), which handles `mailto:` natively. The "no mail client at all" edge case is a small minority of visitors.
+  2. The cross-border availability tagline carries more positioning weight in the footer than a duplicate email — the email already lives in two CTAs above the fold.
+  3. Visitors hovering either CTA still see the address in the browser status bar (browser-default behavior).
+- **Trade-off**: visitors with no `mailto:` handler at all (rare) cannot copy the address from the page. They would see the CTA "do nothing" on click. Acceptable risk for a personal landing where the conversion is "Fran got an email"; if mailto: failures become a real signal in usage data, restore the visible email in fine-print form (e.g., as small text under the footer line).
+- **Follow-up**: Reconsider in a future iteration if the `mailto:` failure mode reaches measurable rates. requirements.md AC 2.6 is left as the original spec; this deviation is captured in research.md as the load-bearing rationale.
+
 ### LocaleSwitcher uses Next.js Link with manually-computed href (T5 deviation)
 
 - **Context**: Design.md called for the LocaleSwitcher to use `next-intl/navigation` helpers. The straightforward `<Link href={pathname} locale={nextLocale} />` from next-intl produces `href="/en"` when switching to the default locale, which the middleware then 307-redirects to `/` (because `localePrefix: 'as-needed'`). Functionally correct but adds a redirect roundtrip.
