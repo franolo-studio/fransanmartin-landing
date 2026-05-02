@@ -16,7 +16,7 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-6 py-16 md:flex-row md:items-center md:gap-12 md:py-20 lg:gap-16 lg:py-24"
+      className="mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-10 px-6 py-16 md:flex-row md:items-center md:gap-12 md:py-20 lg:gap-16 lg:py-24"
     >
       <div className="w-full max-w-sm shrink-0 md:w-2/5 lg:w-1/2">
         <Image
