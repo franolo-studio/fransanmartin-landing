@@ -29,6 +29,13 @@
 - **Trade-off**: Visitors hitting an unknown URL see both languages side-by-side instead of a single locale-matched page. Acceptable for a personal landing where 404s should be rare and the bilingual fallback is informative. Reconsider if/when next-intl publishes an officially-supported pattern for `[locale]/not-found.tsx` under a dynamic root segment.
 - **Follow-up**: Re-test once next-intl ships a v4.x release that adjusts this behavior, or migrate to a different routing pattern (e.g., a non-dynamic root with locale rewrites) if the bilingual fallback becomes user-facing problematic.
 
+### LocaleSwitcher uses Next.js Link with manually-computed href (T5 deviation)
+
+- **Context**: Design.md called for the LocaleSwitcher to use `next-intl/navigation` helpers. The straightforward `<Link href={pathname} locale={nextLocale} />` from next-intl produces `href="/en"` when switching to the default locale, which the middleware then 307-redirects to `/` (because `localePrefix: 'as-needed'`). Functionally correct but adds a redirect roundtrip.
+- **Selected**: Use Next.js `Link` directly with a manually-computed href: `nextLocale === routing.defaultLocale ? pathname : '/' + nextLocale + pathname`. `usePathname` from `next-intl/navigation` still provides the locale-stripped path.
+- **Rationale**: Eliminates the redundant 307 hop; clicking the switcher lands on the target locale in a single request. Keeps the no-JS fallback intact (server-rendered `<a>` with the correct href).
+- **Trade-off**: The component now hard-codes the prefix-construction logic. If `localePrefix` ever changes (e.g., to `'always'`), this needs revisiting. Mitigated because `localePrefix` is a load-bearing routing decision that already requires reviewing all locale-aware code.
+
 ### Middleware location and matcher refinement (T2 deviations)
 
 - **Context**: T2 implementation surfaced two practical refinements to the middleware setup not pinned in the original design.
