@@ -1,8 +1,8 @@
 import { setRequestLocale } from 'next-intl/server';
+import { StickyHeader } from '@/components/layout/StickyHeader';
 import { Hero } from '@/components/sections/Hero';
 import { Footer } from '@/components/sections/Footer';
 import { CursorSpotlight } from '@/components/interactive/CursorSpotlight';
-import { LocaleSwitcher } from '@/components/interactive/LocaleSwitcher';
 
 export default async function LocaleHome({
   params,
@@ -15,10 +15,7 @@ export default async function LocaleHome({
   return (
     <>
       <CursorSpotlight />
-      {/* Temporary loose header — T6.1 will absorb LocaleSwitcher into StickyHeader. */}
-      <header className="mx-auto flex w-full max-w-6xl justify-end px-6 pt-4">
-        <LocaleSwitcher />
-      </header>
+      <StickyHeader />
       <main>
         <Hero />
       </main>
