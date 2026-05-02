@@ -2,8 +2,10 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 
-const HERO_PHOTO_WIDTH = 800;
-const HERO_PHOTO_HEIGHT = 1000;
+// Final photo is 3000×4000 (3:4 portrait, cropped from 3000×4500 source).
+// width/height props only need to preserve the aspect ratio for CLS.
+const HERO_PHOTO_WIDTH = 600;
+const HERO_PHOTO_HEIGHT = 800;
 
 export function Hero() {
   const t = useTranslations();
@@ -23,7 +25,7 @@ export function Hero() {
           width={HERO_PHOTO_WIDTH}
           height={HERO_PHOTO_HEIGHT}
           priority
-          sizes="(max-width: 767px) 18rem, (max-width: 1023px) 40vw, 480px"
+          sizes="(max-width: 767px) 24rem, (max-width: 1023px) 40vw, 540px"
           className="h-auto w-full rounded-2xl border border-border object-cover"
         />
       </div>
