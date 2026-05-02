@@ -29,6 +29,13 @@
 - **Trade-off**: Visitors hitting an unknown URL see both languages side-by-side instead of a single locale-matched page. Acceptable for a personal landing where 404s should be rare and the bilingual fallback is informative. Reconsider if/when next-intl publishes an officially-supported pattern for `[locale]/not-found.tsx` under a dynamic root segment.
 - **Follow-up**: Re-test once next-intl ships a v4.x release that adjusts this behavior, or migrate to a different routing pattern (e.g., a non-dynamic root with locale rewrites) if the bilingual fallback becomes user-facing problematic.
 
+### NEXT_LOCALE cookie disabled (T10 audit fix, R9.2 alignment)
+
+- **Context**: During T10 programmatic audits the response headers showed `Set-Cookie: NEXT_LOCALE=en; Path=/; SameSite=lax`. next-intl middleware sets this cookie by default to remember the visitor's locale across visits. R9.2 ("The Site shall not set cookies, local storage, or session storage to track visitor identity or behavior across visits") prohibits cookies of any kind, including functional ones.
+- **Selected**: Set `localeCookie: false` in `src/i18n/routing.ts`. With `localeDetection` already false (R3.5), the cookie was unused for routing — visitors switch locales explicitly via the LocaleSwitcher or URL, never via inferred preference. Removing the cookie has no functional impact and earns full R9.2 compliance.
+- **Trade-off**: None observable. Visitors who close the tab and revisit `/` always see English (the default locale), regardless of any prior `/es` visit. This matches the spec's "explicit locale only" posture.
+- **Verification**: After rebuild, `curl -sI http://localhost:3000/` and `/es` return no `Set-Cookie` header on either locale.
+
 ### Footer drops the visible email fallback (post-T8 UX iteration, R2.6 deviation)
 
 - **Context**: R2.6 specifies "If the visitor has no default email client configured, then the Site shall still render `sanmartingoyanesfrancisco@gmail.com` as visible, selectable text on the page so it can be copied manually." The Footer originally rendered the address inside an `<address>` element with a `mailto:` link.
