@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "name": "Fran Sanmartín",
+    "tagline": "Te ayudo a convertir ideas en tecnología real y útil",
+    "pitch": "Te ayudo a convertir ideas, workflows o planes de producto sin pulir en herramientas digitales que funcionan. Rápido, ligero y enfocado en el usuario.",
+    "photoAlt": "Retrato de Fran Sanmartín"
+  },
+  "cta": {
+    "label": "Escríbeme →",
+    "shortLabel": "Escríbeme →",
+    "subject": "Hola Fran",
+    "ariaLabel": "Escribir a Fran por email"
+  },
+  "contact": {
+    "email": "sanmartingoyanesfrancisco@gmail.com"
+  },
+  "footer": {
+    "copyright": "© Fran Sanmartín — Todos los derechos reservados"
+  },
+  "meta": {
+    "title": "Fran Sanmartín — Te ayudo a convertir ideas en tecnología real y útil",
+    "description": "Product manager independiente que convierte tus ideas, workflows y planes en herramientas digitales que funcionan. Rápido, ligero y enfocado en el usuario.",
+    "ogTitle": "Fran Sanmartín — Te ayudo a convertir ideas en tecnología real y útil",
+    "ogDescription": "Product manager independiente que convierte tus ideas, workflows y planes en herramientas digitales que funcionan. Rápido, ligero y enfocado en el usuario."
+  },
+  "localeSwitcher": {
+    "toEnglish": "EN",
+    "toSpanish": "ES"
+  },
+  "notFound": {
+    "heading": "Página no encontrada",
+    "backToHome": "Volver al inicio"
+  }
+}

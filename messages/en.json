@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "name": "Fran Sanmartín",
+    "tagline": "Helping you turn ideas into real, usable tech",
+    "pitch": "I help you turn ideas, workflows, or vague product plans into working digital tools. Fast, lean, and user-focused.",
+    "photoAlt": "Portrait of Fran Sanmartín"
+  },
+  "cta": {
+    "label": "Contact me →",
+    "shortLabel": "Contact →",
+    "subject": "Hi Fran",
+    "ariaLabel": "Contact Fran by email"
+  },
+  "contact": {
+    "email": "sanmartingoyanesfrancisco@gmail.com"
+  },
+  "footer": {
+    "copyright": "© Fran Sanmartín — All rights reserved"
+  },
+  "meta": {
+    "title": "Fran Sanmartín — Helping you turn ideas into real, usable tech",
+    "description": "Independent product person turning ideas, workflows, and rough plans into working digital tools — fast, lean, and user-focused.",
+    "ogTitle": "Fran Sanmartín — Helping you turn ideas into real, usable tech",
+    "ogDescription": "Independent product person turning ideas, workflows, and rough plans into working digital tools — fast, lean, and user-focused."
+  },
+  "localeSwitcher": {
+    "toEnglish": "EN",
+    "toSpanish": "ES"
+  },
+  "notFound": {
+    "heading": "Page not found",
+    "backToHome": "Back home"
+  }
+}
