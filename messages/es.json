@@ -24,8 +24,8 @@
     "ogDescription": "Product manager independiente que convierte tus ideas, workflows y planes en herramientas digitales que funcionan. Rápido, ligero y enfocado en el usuario."
   },
   "localeSwitcher": {
-    "toEnglish": "EN",
-    "toSpanish": "ES"
+    "switchTo": "Cambiar a inglés",
+    "shortLabel": "EN"
   },
   "notFound": {
     "heading": "Página no encontrada",

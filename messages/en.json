@@ -24,8 +24,8 @@
     "ogDescription": "Independent product person turning ideas, workflows, and rough plans into working digital tools — fast, lean, and user-focused."
   },
   "localeSwitcher": {
-    "toEnglish": "EN",
-    "toSpanish": "ES"
+    "switchTo": "Switch to Spanish",
+    "shortLabel": "ES"
   },
   "notFound": {
     "heading": "Page not found",
