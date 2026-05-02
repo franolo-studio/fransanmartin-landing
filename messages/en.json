@@ -2,7 +2,7 @@
   "hero": {
     "name": "Fran Sanmartín",
     "tagline": "Strategy that ships.",
-    "pitch": "You have the vision. I'll handle the roadmap. From strategy to go-to-market to the engineering behind it, with the clarity your board expects and without the overhead of an agency.",
+    "pitch": "You have the vision. I'll handle the roadmap. From strategy to go-to-market to the engineering behind it, with the clarity your leadership expects and without the overhead of an agency.",
     "photoAlt": "Portrait of Fran Sanmartín"
   },
   "cta": {
@@ -16,13 +16,14 @@
     "email": "sanmartingoyanesfrancisco@gmail.com"
   },
   "footer": {
+    "availability": "Available for teams worldwide.",
     "copyright": "© Fran Sanmartín — All rights reserved"
   },
   "meta": {
     "title": "Fran Sanmartín — Strategy that ships",
-    "description": "You have the vision. I'll handle the roadmap. Strategy, go-to-market, and engineering with board-ready clarity and no agency overhead.",
+    "description": "You have the vision. I'll handle the roadmap. Strategy, go-to-market, and engineering with leadership-ready clarity and no agency overhead.",
     "ogTitle": "Fran Sanmartín — Strategy that ships",
-    "ogDescription": "You have the vision. I'll handle the roadmap. Strategy, go-to-market, and engineering with board-ready clarity and no agency overhead."
+    "ogDescription": "You have the vision. I'll handle the roadmap. Strategy, go-to-market, and engineering with leadership-ready clarity and no agency overhead."
   },
   "localeSwitcher": {
     "switchTo": "Switch to Spanish",

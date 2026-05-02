@@ -10,17 +10,14 @@ export function StickyHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
-      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-6 lg:h-16">
-        <span className="text-sm font-medium text-muted-foreground">Fran</span>
-        <div className="flex items-center gap-2">
-          <LocaleSwitcher />
-          <Button asChild>
-            <a href={mailtoHref} aria-label={t('cta.ariaLabel')}>
-              <span className="hidden sm:inline">{t('cta.headerLabel')}</span>
-              <span className="sm:hidden">{t('cta.shortLabel')}</span>
-            </a>
-          </Button>
-        </div>
+      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-end gap-2 px-6 lg:h-16">
+        <LocaleSwitcher />
+        <Button asChild>
+          <a href={mailtoHref} aria-label={t('cta.ariaLabel')}>
+            <span className="hidden sm:inline">{t('cta.headerLabel')}</span>
+            <span className="sm:hidden">{t('cta.shortLabel')}</span>
+          </a>
+        </Button>
       </div>
     </header>
   );

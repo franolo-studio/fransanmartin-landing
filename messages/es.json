@@ -2,7 +2,7 @@
   "hero": {
     "name": "Fran Sanmartín",
     "tagline": "Estrategia que llega a producción.",
-    "pitch": "Tienes la visión. Yo me encargo del roadmap. De la estrategia al go-to-market y la ingeniería que lo sostiene, con la claridad que tu consejo espera y sin el overhead de una agencia.",
+    "pitch": "Tienes la visión. Yo me encargo del roadmap. De la estrategia al go-to-market y la ingeniería que lo sostiene, con la claridad que la dirección espera y sin el overhead de una agencia.",
     "photoAlt": "Retrato de Fran Sanmartín"
   },
   "cta": {
@@ -16,13 +16,14 @@
     "email": "sanmartingoyanesfrancisco@gmail.com"
   },
   "footer": {
+    "availability": "Disponible para equipos en todo el mundo.",
     "copyright": "© Fran Sanmartín — Todos los derechos reservados"
   },
   "meta": {
     "title": "Fran Sanmartín — Estrategia que llega a producción",
-    "description": "Tienes la visión. Yo me encargo del roadmap. Estrategia, go-to-market e ingeniería con la claridad que espera tu consejo y sin el overhead de una agencia.",
+    "description": "Tienes la visión. Yo me encargo del roadmap. Estrategia, go-to-market e ingeniería con la claridad que espera la dirección y sin el overhead de una agencia.",
     "ogTitle": "Fran Sanmartín — Estrategia que llega a producción",
-    "ogDescription": "Tienes la visión. Yo me encargo del roadmap. Estrategia, go-to-market e ingeniería con la claridad que espera tu consejo y sin el overhead de una agencia."
+    "ogDescription": "Tienes la visión. Yo me encargo del roadmap. Estrategia, go-to-market e ingeniería con la claridad que espera la dirección y sin el overhead de una agencia."
   },
   "localeSwitcher": {
     "switchTo": "Cambiar a inglés",
