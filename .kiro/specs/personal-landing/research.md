@@ -21,6 +21,14 @@
   - The `Link` and `useRouter` helpers exposed by `next-intl/navigation` handle locale-aware routing in the LocaleSwitcher without manual URL math.
 - **Implications**: Configure `i18n/routing.ts` with `locales: ['en', 'es']`, `defaultLocale: 'en'`, `localePrefix: 'as-needed'`, `localeDetection: false`.
 
+### not-found.tsx fallback strategy (T3 deviation)
+
+- **Context**: T3.3 requires a translated 404 page for unknown routes within both `/` and `/es`. Standard pattern: `[locale]/not-found.tsx` reads translations via `useTranslations('notFound')` or `getTranslations` after the layout calls `setRequestLocale`.
+- **Issue surfaced during T3**: With `[locale]` as the dynamic root segment (no `app/layout.tsx`), Next.js 15 routes unmatched paths through the global `app/not-found.tsx` rather than `app/[locale]/not-found.tsx`. `getTranslations` from `next-intl/server` raises "No intl context found" because `setRequestLocale` is never invoked for unmatched routes. `useTranslations` in `[locale]/not-found.tsx` similarly never executes because the segment match fails before the layout chain runs.
+- **Selected workaround**: `app/not-found.tsx` renders a bilingual hardcoded fallback ("Page not found · Página no encontrada") with two locale-specific back-home links (`/` and `/es`). The page renders without depending on the i18n provider, ships in the initial HTML, and works with JavaScript disabled. `[locale]/not-found.tsx` is kept as a future-ready placeholder using the `useTranslations` hook in case Next.js + next-intl resolves the segment routing in a future version, but it is not currently activated.
+- **Trade-off**: Visitors hitting an unknown URL see both languages side-by-side instead of a single locale-matched page. Acceptable for a personal landing where 404s should be rare and the bilingual fallback is informative. Reconsider if/when next-intl publishes an officially-supported pattern for `[locale]/not-found.tsx` under a dynamic root segment.
+- **Follow-up**: Re-test once next-intl ships a v4.x release that adjusts this behavior, or migrate to a different routing pattern (e.g., a non-dynamic root with locale rewrites) if the bilingual fallback becomes user-facing problematic.
+
 ### Middleware location and matcher refinement (T2 deviations)
 
 - **Context**: T2 implementation surfaced two practical refinements to the middleware setup not pinned in the original design.
