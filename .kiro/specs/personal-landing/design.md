@@ -172,7 +172,7 @@ public/
 ├── fran.jpg                    # Hero photo (placeholder acceptable in v1; final asset before launch)
 └── og.png                      # Shared social preview image (1200×630 brand image)
 
-middleware.ts                   # next-intl middleware at project root
+src/middleware.ts               # next-intl middleware (Next.js places middleware inside src/ when src-dir is used)
 next.config.ts                  # withNextIntl plugin wrapper
 postcss.config.mjs              # PostCSS + Tailwind plugin (@tailwindcss/postcss)
 eslint.config.mjs               # ESLint flat config (next/core-web-vitals + next/typescript) — runs via `eslint .`

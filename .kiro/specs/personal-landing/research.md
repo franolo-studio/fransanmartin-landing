@@ -19,7 +19,18 @@
   - `next-intl` provides middleware-based locale routing with `localePrefix: 'as-needed'`, which serves the default locale at `/` and prefixes other locales (`/es`).
   - `localeDetection: true` (the default) negotiates Accept-Language and redirects. Setting `localeDetection: false` disables that redirect — exactly what R3.5 requires.
   - The `Link` and `useRouter` helpers exposed by `next-intl/navigation` handle locale-aware routing in the LocaleSwitcher without manual URL math.
-- **Implications**: Configure `i18n/routing.ts` with `locales: ['en', 'es']`, `defaultLocale: 'en'`, `localePrefix: 'as-needed'`, `localeDetection: false`. The middleware lives at the project root.
+- **Implications**: Configure `i18n/routing.ts` with `locales: ['en', 'es']`, `defaultLocale: 'en'`, `localePrefix: 'as-needed'`, `localeDetection: false`.
+
+### Middleware location and matcher refinement (T2 deviations)
+
+- **Context**: T2 implementation surfaced two practical refinements to the middleware setup not pinned in the original design.
+- **1. Middleware lives at `src/middleware.ts`, not the project root.**
+  - **Reason**: With Next.js 15 + `src/` directory, Next.js looks for middleware inside `src/`. A `middleware.ts` at the repository root is silently ignored when `src/` is in use.
+  - **Trade-off**: Minor deviation from the design.md File Structure Plan, which read "middleware.ts at project root". Updated the design's file structure to reflect `src/middleware.ts`.
+
+- **2. Matcher uses three patterns instead of one.**
+  - **Reason**: The single catch-all matcher `'/((?!api|_next|_vercel|.*\\..*).*)'` did not consistently match the bare `/` request in dev/Turbopack. Switched to the canonical next-intl recommendation: an explicit `'/'`, an explicit locale-prefix matcher (`'/(en|es)/:path*'`), and the catch-all for any other path. This is the pattern shown in next-intl v4 official examples.
+  - **Trade-off**: Three lines instead of one; semantically identical for our two locales but more robust at the root path. If a third locale is added later, the locale-prefix matcher must list it (revalidation trigger).
 
 ### Cursor spotlight implementation pattern
 
