@@ -1,15 +1,16 @@
 {
   "hero": {
     "name": "Fran Sanmartín",
-    "tagline": "Helping you turn ideas into real, usable tech",
-    "pitch": "I help you turn ideas, workflows, or vague product plans into working digital tools. Fast, lean, and user-focused.",
+    "tagline": "Strategy that ships.",
+    "pitch": "You have the vision. I'll handle the roadmap. From strategy to go-to-market to the engineering behind it, with the clarity your board expects and without the overhead of an agency.",
     "photoAlt": "Portrait of Fran Sanmartín"
   },
   "cta": {
-    "label": "Contact me →",
-    "shortLabel": "Contact →",
+    "label": "Start the conversation →",
+    "shortLabel": "Talk →",
+    "headerLabel": "Contact",
     "subject": "Hi Fran",
-    "ariaLabel": "Contact Fran by email"
+    "ariaLabel": "Start the conversation with Fran"
   },
   "contact": {
     "email": "sanmartingoyanesfrancisco@gmail.com"
@@ -18,10 +19,10 @@
     "copyright": "© Fran Sanmartín — All rights reserved"
   },
   "meta": {
-    "title": "Fran Sanmartín — Helping you turn ideas into real, usable tech",
-    "description": "Independent product person turning ideas, workflows, and rough plans into working digital tools — fast, lean, and user-focused.",
-    "ogTitle": "Fran Sanmartín — Helping you turn ideas into real, usable tech",
-    "ogDescription": "Independent product person turning ideas, workflows, and rough plans into working digital tools — fast, lean, and user-focused."
+    "title": "Fran Sanmartín — Strategy that ships",
+    "description": "You have the vision. I'll handle the roadmap. Strategy, go-to-market, and engineering with board-ready clarity and no agency overhead.",
+    "ogTitle": "Fran Sanmartín — Strategy that ships",
+    "ogDescription": "You have the vision. I'll handle the roadmap. Strategy, go-to-market, and engineering with board-ready clarity and no agency overhead."
   },
   "localeSwitcher": {
     "switchTo": "Switch to Spanish",

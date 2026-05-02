@@ -1,15 +1,16 @@
 {
   "hero": {
     "name": "Fran Sanmartín",
-    "tagline": "Te ayudo a convertir ideas en tecnología real y útil",
-    "pitch": "Te ayudo a convertir ideas, workflows o planes de producto sin pulir en herramientas digitales que funcionan. Rápido, ligero y enfocado en el usuario.",
+    "tagline": "Estrategia que llega a producción.",
+    "pitch": "Tienes la visión. Yo me encargo del roadmap. De la estrategia al go-to-market y la ingeniería que lo sostiene, con la claridad que tu consejo espera y sin el overhead de una agencia.",
     "photoAlt": "Retrato de Fran Sanmartín"
   },
   "cta": {
-    "label": "Escríbeme →",
-    "shortLabel": "Escríbeme →",
+    "label": "Iniciar la conversación →",
+    "shortLabel": "Hablar →",
+    "headerLabel": "Contacto",
     "subject": "Hola Fran",
-    "ariaLabel": "Escribir a Fran por email"
+    "ariaLabel": "Inicia la conversación con Fran"
   },
   "contact": {
     "email": "sanmartingoyanesfrancisco@gmail.com"
@@ -18,10 +19,10 @@
     "copyright": "© Fran Sanmartín — Todos los derechos reservados"
   },
   "meta": {
-    "title": "Fran Sanmartín — Te ayudo a convertir ideas en tecnología real y útil",
-    "description": "Product manager independiente que convierte tus ideas, workflows y planes en herramientas digitales que funcionan. Rápido, ligero y enfocado en el usuario.",
-    "ogTitle": "Fran Sanmartín — Te ayudo a convertir ideas en tecnología real y útil",
-    "ogDescription": "Product manager independiente que convierte tus ideas, workflows y planes en herramientas digitales que funcionan. Rápido, ligero y enfocado en el usuario."
+    "title": "Fran Sanmartín — Estrategia que llega a producción",
+    "description": "Tienes la visión. Yo me encargo del roadmap. Estrategia, go-to-market e ingeniería con la claridad que espera tu consejo y sin el overhead de una agencia.",
+    "ogTitle": "Fran Sanmartín — Estrategia que llega a producción",
+    "ogDescription": "Tienes la visión. Yo me encargo del roadmap. Estrategia, go-to-market e ingeniería con la claridad que espera tu consejo y sin el overhead de una agencia."
   },
   "localeSwitcher": {
     "switchTo": "Cambiar a inglés",

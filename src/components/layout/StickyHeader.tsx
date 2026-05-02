@@ -16,7 +16,7 @@ export function StickyHeader() {
           <LocaleSwitcher />
           <Button asChild>
             <a href={mailtoHref} aria-label={t('cta.ariaLabel')}>
-              <span className="hidden sm:inline">{t('cta.label')}</span>
+              <span className="hidden sm:inline">{t('cta.headerLabel')}</span>
               <span className="sm:hidden">{t('cta.shortLabel')}</span>
             </a>
           </Button>
