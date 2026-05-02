@@ -124,7 +124,7 @@ i18n/routing  ←  lib/cn  ←  components/ui  ←  components/interactive  ← 
 |-------|------------------|-----------------|-------|
 | Frontend framework | Next.js 15 (App Router) | Server-rendered React, static generation, image optimization, font self-hosting | Locked by steering. Default rendering on Vercel; no `output: 'export'`. |
 | Language | TypeScript 5+ (strict) | Type safety across components, props, message keys | `any` forbidden per steering. |
-| Styling | Tailwind CSS | Utility-first styling, responsive breakpoints, design tokens | Steering-locked. Tailwind plugin for class sorting via Prettier. |
+| Styling | Tailwind CSS v4 (via `@tailwindcss/postcss`) | Utility-first styling, responsive breakpoints, semantic design tokens | Theme tokens (background, foreground, primary, muted, ring, font-sans) declared inline via `@theme` in `globals.css` (v4 idiom). No separate `tailwind.config.ts` — content paths are auto-detected in v4. |
 | UI primitives | shadcn/ui `Button` | Single primitive copy-pasted into `src/components/ui/button.tsx` | Owned in-repo; not an npm dep. |
 | Icons | `lucide-react` | Optional inline icons (e.g., locale switcher chevron, CTA arrow alternative) | Already implied by steering. |
 | Locale routing | `next-intl` v4 | Path-prefix routing, middleware, message resolution, `useTranslations`, navigation helpers | `localeDetection: false` to satisfy R3.5. |
@@ -174,12 +174,14 @@ public/
 
 middleware.ts                   # next-intl middleware at project root
 next.config.ts                  # withNextIntl plugin wrapper
-tailwind.config.ts              # Tailwind config (content paths, theme tokens)
-postcss.config.mjs              # PostCSS + Tailwind plugin
+postcss.config.mjs              # PostCSS + Tailwind plugin (@tailwindcss/postcss)
+eslint.config.mjs               # ESLint flat config (next/core-web-vitals + next/typescript) — runs via `eslint .`
+.prettierrc.json                # Prettier 3 with prettier-plugin-tailwindcss
 tsconfig.json                   # strict: true, "@/*" path alias to ./src/*
-package.json                    # pnpm scripts: dev, build, start, lint
+package.json                    # pnpm scripts: dev, build, start, lint, format
+.nvmrc                          # Node 20+
 .gitignore
-README.md
+# Tailwind v4 has no tailwind.config.ts — theme tokens live in src/app/globals.css via @theme.
 ```
 
 ### Modified Files
@@ -605,6 +607,7 @@ Each unchecked item is a deploy blocker. The checklist is the v1 verification ga
 
 ### Privacy
 
+- [ ] Next.js anonymous telemetry is disabled in the build environment (`pnpm exec next telemetry status` reports `Status: Disabled`) so build/runtime emit no Vercel-bound telemetry pings (R9.1)
 - [ ] No third-party requests in Network panel beyond own domain (R9.1)
 - [ ] View Source on both pages: zero `<script>` or `<link>` tags pointing at third-party domains (R9.1)
 - [ ] No cookies, `localStorage`, or `sessionStorage` entries set after a full session — DevTools Application tab empty (R9.2, R9.3)

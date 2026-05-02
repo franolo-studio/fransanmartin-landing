@@ -142,6 +142,31 @@
 - **Rationale**: Convention + immediate discoverability. Honors R3.4 and R7.2 (keyboard reachability).
 - **Trade-offs**: Adds a thin header layer to the page composition. Negligible cost.
 
+### Decision: T1 toolchain modernizations (Tailwind v4, ESLint CLI, format script, telemetry disable)
+
+- **Context**: T1 implementation surfaced four toolchain choices that were not pinned in the original design but materially affect day-to-day work. Logged here so the spec stays the source of truth.
+- **1. Tailwind v4 with theme tokens in `globals.css` via `@theme`** (deviates from design.md File Structure Plan).
+  - **Alternatives**: Tailwind v3 with classic `tailwind.config.ts`; or Tailwind v4 with a JS config bridge (legacy mode).
+  - **Selected**: v4 with theme tokens declared inline in CSS via `@theme`. Content paths auto-detected. No `tailwind.config.ts`.
+  - **Rationale**: v4 is the current default for new Next.js 15 projects, ships with `@tailwindcss/postcss` integration, and colocates tokens with the global stylesheet — fewer files to keep in sync. The architectural intent of the design (semantic tokens, content scoping) is preserved; only the location moves.
+  - **Trade-offs**: Tokens live in CSS rather than TS, so they cannot be imported by JS code — but no component in this spec needs that. Recipes online for v3 do not always translate cleanly to v4. Mitigated by the small surface (one stylesheet).
+
+- **2. ESLint CLI directly (`eslint .`) instead of `next lint`**.
+  - **Context**: `next lint` is deprecated in Next.js 15.x and scheduled for removal in 16.x. The `lint` script needed to keep working past the next major bump.
+  - **Selected**: Run ESLint via its native CLI (`eslint .`) using the existing flat config. Added `eslint-plugin-react`, `eslint-plugin-react-hooks`, and `@typescript-eslint/*` as explicit devDependencies because pnpm strict resolution does not auto-pull `eslint-config-next` peer plugins.
+  - **Rationale**: One change now, future-proof against Next.js 16. No deprecation warnings.
+  - **Trade-offs**: One extra-explicit peer-dep dance. Mitigated by pinning the plugin versions.
+
+- **3. `pnpm format` script (Prettier write)**.
+  - **Selected**: Added `format: 'prettier --write .'` to `package.json` so contributors (and Claude) can format consistently from a single command. Prettier itself was already in the design via `prettier-plugin-tailwindcss` for class sorting.
+  - **Rationale**: Matches the level of standardization already in `lint` and `dev`. Cost: one line of `package.json`.
+
+- **4. Next.js telemetry disabled via `next telemetry disable`**.
+  - **Context**: R9 prohibits third-party endpoints as a side effect of build or runtime. `next telemetry` is anonymous but still beacons to Vercel from the local build environment.
+  - **Selected**: Run `pnpm exec next telemetry disable` once during T1; the disable flag persists in the user's Next.js config dir. Added a checklist item to the design.md Pre-Launch Verification Checklist (Privacy section) so future deploys re-verify the status.
+  - **Rationale**: Strict reading of R9.1 / R9.3 excludes telemetry pings even in the build environment. Cheap to disable, easy to verify, no downside.
+  - **Follow-up**: When deploying on a fresh CI/Vercel environment, ensure the `NEXT_TELEMETRY_DISABLED=1` env var is set so the disable persists per build.
+
 ## Risks & Mitigations
 
 - **Spotlight drops below 60fps on low-end laptops** — Mitigation: rAF throttle ensures at most one style write per frame; if profiling reveals jank, fall back to a static gradient when the device's `navigator.hardwareConcurrency` is below a threshold. Defer this fallback unless real measurements demand it.
